@@ -10,6 +10,9 @@ def main
   puts ENV['SLACK_TOKEN']
 
   # TODO project
+  # wave1:
+  # users should see information about how many channels and users were loaded
+
   response = HTTParty.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
   user_response = HTTParty.get('https://slack.com/api/users.list', query: {token: ENV['SLACK_TOKEN']})
 
