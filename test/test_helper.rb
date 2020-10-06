@@ -14,14 +14,9 @@ require "dotenv"
 require "../lib/slack.rb"
 require_relative "../lib/slack"
 
-Dotenv.load
+# Dotenv.load
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
-
-VCR.configure do |config|
-  config.cassette_library_dir = "test/cassettes"
-  config.hook_into :webmock
-end
 
 VCR.configure do |config|
   config.cassette_library_dir = "test/cassettes" # folder where casettes will be located
