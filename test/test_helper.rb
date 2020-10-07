@@ -11,10 +11,9 @@ require 'vcr'
 
 require "webmock/minitest"
 require "dotenv"
-require "../lib/slack.rb"
 require_relative "../lib/slack"
 
-# Dotenv.load
+Dotenv.load
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
