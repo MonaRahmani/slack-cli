@@ -3,7 +3,7 @@ require_relative 'workspace'
 require 'dotenv'
 require 'httparty'
 require 'table_print'
-require 'terminal-table'
+require 'table_print'
 require_relative 'recipient'
 Dotenv.load
 
@@ -23,8 +23,8 @@ def main
   #   p member["name"]
   # end
   #=============
-  response = HTTParty.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
-  user_response = HTTParty.get('https://slack.com/api/users.list', query: {token: ENV['SLACK_TOKEN']})
+  # response = HTTParty.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
+  # user_response = HTTParty.get('https://slack.com/api/users.list', query: {token: ENV['SLACK_TOKEN']})
 
   user_input = request_input
 

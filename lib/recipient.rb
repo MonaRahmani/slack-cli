@@ -6,14 +6,13 @@ require_relative 'slack'
 
 Dotenv.load
 token = ENV['SLACK_TOKEN']
-# needs to be parent of user and channel
-# attributes: slack_id, name
-# methods:
-#    implemented: send_message(message), self.get(url, params)
-#    abstract: details, self.list_all
-module Slack
 
+module Slack
   class Recipient
+
+    USER_LIST = 'https://slack.com/api/conversations.list'
+    CHANNEL_LIST = 'https://slack.com/api/users.list'
+
     attr_reader :slack_id, :name
 
     def initialize(slack_id:, name:)
@@ -21,17 +20,16 @@ module Slack
       @name = name
     end
 
-    def send_message(message) end
+    def send_message(message)
+    end
 
 
     def self.get(url, params)
-
       response = HTTParty.get(url, params)
 
-      # if response.code != 200
-      #   raise StandardError, "API call failed with code #{response.code} and reason #{response['reason']}"
-      # end
-
+      if response.code != 200
+        raise SlackAPIError, "API call failed with code #{response.code} and reason #{response['reason']}"
+      end
       return response
     end
 
