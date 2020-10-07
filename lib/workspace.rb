@@ -2,14 +2,14 @@ require 'httparty'
 require 'dotenv'
 require 'table_print'
 # require_relative 'slack'
-# require_relative 'channel'
-# require_relative 'user'
+require_relative 'channel'
+require_relative 'user'
 # require_relative 'recipient'
 
 Dotenv.load
 
-module Slack
-  class Workspace
+
+class Workspace
 
     attr_reader :users, :channels, :selected
 
@@ -26,11 +26,11 @@ module Slack
 
     end
 
-    def select_user
-      @users.each do |user|
-
+    def select_user(id)
+      user_array = @users.find do |user|
+        user.slack_id = id
       end
-
+      return user_array
     end
 
 
@@ -41,6 +41,4 @@ module Slack
     def send_message
 
     end
-  end
-
 end

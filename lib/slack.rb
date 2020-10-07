@@ -30,15 +30,15 @@ def main
 
   until user_input == "quit"
     case user_input
-      when "list_user"
-        tb workspace.users, :name, :slack_id, :real_name
-      when "list_channel"
-        tb workspace.channels, :name, :topic, :member_count, :slack_id
-      when "quit"
-        break
-      else
-        user_input = request_input
-      end
+    when "list_user"
+      tb workspace.users, :name, :slack_id, :real_name
+    when "list_channel"
+      tb workspace.channels, :name, :topic, :member_count, :slack_id
+    when "quit"
+      break
+    else
+      user_input = request_input
+    end
   end
   puts "Thank you for using the Ada Slack CLI"
 end

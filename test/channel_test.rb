@@ -33,13 +33,6 @@ end
 
 
 
-
-
-
-
-
-
-
 # describe "Channel class" do
 #   before do
 #     @channel = Channel.new(

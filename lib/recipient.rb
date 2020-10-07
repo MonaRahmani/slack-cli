@@ -7,8 +7,8 @@ require_relative 'slack'
 Dotenv.load
 token = ENV['SLACK_TOKEN']
 
-module Slack
-  class Recipient
+
+class Recipient
 
     USER_LIST = 'https://slack.com/api/conversations.list'
     CHANNEL_LIST = 'https://slack.com/api/users.list'
@@ -33,6 +33,8 @@ module Slack
       return response
     end
 
+
+
     def details
       raise NotImplementedError, 'Implement me in a child class!'
     end
@@ -41,5 +43,4 @@ module Slack
       raise NotImplementedError, 'Implement me in a child class!'
     end
 
-  end
 end

@@ -1,18 +1,14 @@
-require 'httparty'
+# require 'httparty'
 require 'dotenv'
 require 'table_print'
-require_relative 'workspace'
-require_relative 'slack'
-require_relative 'user'
+# require_relative 'workspace'
+# require_relative 'slack'
+# require_relative 'user'
 require_relative 'recipient'
 
 Dotenv.load
-# needs to be child of recipient
-# attributes: topic, member_count
-# methods: details, self.list_all
-module Slack
 
-  class Channel < Recipient
+class Channel < Recipient
     attr_reader :topic, :member_count
 
     def initialize(name:, slack_id:, topic:, member_count:)
@@ -26,12 +22,11 @@ module Slack
     end
 
     def self.list_all
-
-      responce = self.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
+      response = get(CHANNEL_LIST, query: {token: ENV['SLACK_TOKEN']})
 
       channels = []
-      responce["channels"].each do |channel|
-        new_channel = self.new(
+      response["channels"].each do |channel|
+        new_channel = new(
             name: channel["name"],
             slack_id: channel["id"],
             topic: channel["topic"]["value"],
@@ -43,7 +38,6 @@ module Slack
       end
       return channels
     end
-
-  end
 end
+
 
