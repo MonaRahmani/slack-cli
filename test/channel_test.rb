@@ -9,7 +9,7 @@ describe "channel" do
           slack_id: "D45HG123E",
           name: "random",
           # not sure topic:{},
-          topic: "test",
+          topic:"test",
           member_count: "12"
       )
     end
@@ -21,9 +21,12 @@ describe "channel" do
 
     describe 'self.get' do
       it 'returns list of channels' do
+        response = {}
         VCR.use_cassette('channel_list') do
-          response = Channel.get('https://slack.com/api/conversations.list', {token: ENV['SLACK_TOKEN']})
+        response = User.get('https://slack.com/api/conversations.list', {token: ENV['SLACK_TOKEN']})
         end
+      end
+
       expect(response).must_be_kind_of HTTParty::Response
       expect(response['ok']).must_equal true
 
@@ -41,8 +44,8 @@ describe "channel" do
 
     it 'raise an error when it fails to response(bad url/api)' do
       VCR.use_cassette('channel_list') do
-        expect { User.get('https://slack.com/api/', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
       end
+    end
     describe 'self.list_all' do
       it 'returns a list of channel' do
         VCR.use_cassette('channel_list') do

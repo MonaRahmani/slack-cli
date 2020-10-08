@@ -1,21 +1,10 @@
 require 'httparty'
 
 
-<<<<<<< HEAD
-class SlackAPIError < Exception; end
-
-class Recipient
-
-    USER_LIST = 'https://slack.com/api/users.list'
-    CHANNEL_LIST = 'https://slack.com/api/conversations.list'
-=======
-class SlackAPIError < StandardError; end
-
 class Recipient
 
     CHANNEL_LIST = 'https://slack.com/api/conversations.list'
-    USER_LIST = 'https://slack.com/api/users.list'
->>>>>>> b25fd29b9406bf01b3ed8a6ec91808e744bbaf54
+    CHANNEL_LIST = 'https://slack.com/api/users.list'
     MESSAGE_LIST = 'https://slack.com/api/chat.postMessage'
 
     attr_reader :slack_id, :name
