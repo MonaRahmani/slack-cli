@@ -4,13 +4,13 @@ require_relative 'user'
 require_relative 'channel'
 require_relative 'slack'
 
-Dotenv.load
+
 class SlackAPIError < Exception; end
 
 class Recipient
 
-    USER_LIST = 'https://slack.com/api/conversations.list'
-    CHANNEL_LIST = 'https://slack.com/api/users.list'
+    USER_LIST = 'https://slack.com/api/users.list'
+    CHANNEL_LIST = 'https://slack.com/api/conversations.list'
     MESSAGE_LIST = 'https://slack.com/api/chat.postMessage'
 
     attr_reader :slack_id, :name
