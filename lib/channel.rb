@@ -19,6 +19,8 @@ class Channel < Recipient
 
     def details
       #prints info for currently selected channel, if not, should let user know and return to main command prompt
+      detailed_info = "Slack_id: #{slack_id}, Name: #{@name}, Member Count: #{@member_count}"
+      return detailed_info
     end
 
     def self.list_all
@@ -34,7 +36,6 @@ class Channel < Recipient
 
         )
         channels << new_channel
-        Workspace.add_channel(new_channel)
       end
       return channels
     end

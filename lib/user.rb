@@ -18,7 +18,8 @@ class User < Recipient
 
     def details
       #prints info for currently selected user, if not, should let user know and return to main command prompt
-
+      detailed_info = "Slack_id: #{@slack_id}, Name: #{@name}"
+      return detailed_info
     end
 
     def self.list_all
