@@ -50,7 +50,7 @@ class Workspace
 
     end
 
-
+    # program should print out details for the currently selected recipient
     def show_details
       # will call the details method of the previously selected user or channel
       @selected.details
