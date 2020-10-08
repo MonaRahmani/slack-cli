@@ -5,8 +5,6 @@ require_relative 'channel'
 require_relative 'slack'
 
 Dotenv.load
-token = ENV['SLACK_TOKEN']
-
 
 class Recipient
 

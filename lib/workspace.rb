@@ -21,10 +21,10 @@ class Workspace
     end
 
     def select_channel(id)
-      channel = @channels.find do |channel|
+      requested_channel = @channels.find do |channel|
         channel.slack_id = id || channel.name == id
       end
-      @selected = channel
+      @selected = requested_channel
 
       if @selected.nil?
         return "no channel found"
@@ -50,7 +50,7 @@ class Workspace
 
     end
 
-    # program should print out details for the currently selected recipient
+    # when user type "details the program should print out details for the currently selected recipient
     def show_details
       # will call the details method of the previously selected user or channel
       @selected.details
