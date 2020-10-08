@@ -1,5 +1,6 @@
 require 'httparty'
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 class SlackAPIError < Exception; end
@@ -17,6 +18,14 @@ class Recipient
     USER_LIST = 'https://slack.com/api/users.list'
 >>>>>>> b25fd29b9406bf01b3ed8a6ec91808e744bbaf54
     MESSAGE_LIST = 'https://slack.com/api/chat.postMessage'
+=======
+Dotenv.load
+
+class Recipient
+
+    USER_LIST = 'https://slack.com/api/conversations.list'
+    CHANNEL_LIST = 'https://slack.com/api/users.list'
+>>>>>>> parent of ff0817a... def send_message added
 
     attr_reader :slack_id, :name
 
@@ -26,11 +35,6 @@ class Recipient
     end
 
     def send_message(message)
-      response = HTTParty.post(MESSAGE_LIST, body: {
-          token: ENV['SLACK_TOKEN'],
-          text: message,
-          channel: @session
-      })
     end
 
 

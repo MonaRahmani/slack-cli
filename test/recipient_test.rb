@@ -2,7 +2,6 @@
 require_relative 'test_helper'
 require_relative '../lib/recipient'
 
-
 describe Recipient do
   before do
     @recipient = Recipient.new('T016J51T03T', 'test')
