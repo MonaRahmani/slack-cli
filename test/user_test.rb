@@ -27,34 +27,30 @@ describe "User" do
       end
     end
 
-    describe "get_users" do
-      it "gets all the slack users" do
-        VCR.use_cassette("channels_list")
-        response = channel.get(
-            'https://slack.com/api/users.list',
-            query: {token: ENV['SLACK_TOKEN']}
-        )
-        expect(response["members"]).must_be_kind_of Array
-        expect(response.code).must_equal 200
-        expect(response["ok"]).must_equal true
+    describe 'self.get' do
+      it 'returns list of users' do
+        response = {}
+        VCR.use_cassette('user_list') do
+          response = User.get('https://slack.com/api/users.list', {token: ENV['SLACK_TOKEN']})
+        end
+        expect(response).must_be_kind_of HTTParty::Response
+        expect(response['ok']).must_equal true
+      end
+
+      it 'raise an error when it fails to response(bad url/api)' do
+        VCR.use_cassette('user_list') do
+          expect { User.get('https://slack.com/api/users')}.must_raise SlackError
+        end
+      end
+      describe 'self.list_all' do
+        it 'returns a list of users' do
+          VCR.use_cassette('user_list') do
+            response = User.get('https://slack.com/api/users.list', {token: ENV['SLACK_TOKEN']})
+            expect { response }.must_be_kind_of Array
+          end
+        end
       end
     end
-
-    it "will raise an exception if the search fails" do
-      VCR.use_cassette("users_find") do
-        expect {
-          user.get(
-              'https://slack.com/api/ust',
-              query: {token: ENV['SLACK_TOKEN']}
-          )
-        }.must_raise SearchError
-      end
-    end
-
-
-
-
-
   end
 end
 
