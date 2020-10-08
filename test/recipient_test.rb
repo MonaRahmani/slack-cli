@@ -22,10 +22,18 @@ describe Recipient do
   # send message test
   # self get test
   # details test
+  describe 'details' do
+    it "raise error if it's not implemented in a child class" do
+      expect do @recipient.details
+      end.must_raise NotImplementedError
+    end
+  end
+
 
   describe 'list_all' do
     it "raise error if it's not implemented in a child class" do
-      expect {Recipient.list_all}.must_raise NotImplementedError
+      expect do @recipient.list_all
+        end.must_raise NotImplementedError
     end
   end
 

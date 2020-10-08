@@ -1,12 +1,6 @@
-# require 'httparty'
-require 'dotenv'
-require 'table_print'
-# require_relative 'workspace'
-# require_relative 'slack'
-# require_relative 'user'
+
 require_relative 'recipient'
 
-Dotenv.load
 
 class Channel < Recipient
     attr_reader :topic, :member_count
@@ -24,7 +18,7 @@ class Channel < Recipient
     end
 
     def self.list_all
-      response = get(CHANNEL_LIST, query: {token: ENV['SLACK_TOKEN']})
+      response = get(CHANNEL_LIST, {token: ENV['SLACK_TOKEN']})
 
       channels = []
       response["channels"].each do |channel|

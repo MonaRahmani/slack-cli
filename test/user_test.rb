@@ -31,14 +31,14 @@ describe "User" do
 
       it 'raise an error when it fails to response(bad url/api)' do
         VCR.use_cassette('user_list') do
-          expect { User.get('https://slack.com/api/users', {token: ENV['SLACK_TOKEN']})}.must_raise SlackError
+          expect { User.get('https://slack.com/api/users', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
         end
       end
       describe 'self.list_all' do
         it 'returns a list of users' do
           VCR.use_cassette('user_list') do
-            response = User.get('https://slack.com/api/users.list', {token: ENV['SLACK_TOKEN']})
-            expect { response }.must_be_kind_of Array
+            users = User.list_all
+            expect(users).must_be_kind_of Array
           end
         end
       end

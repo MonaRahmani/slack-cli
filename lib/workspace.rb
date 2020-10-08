@@ -1,13 +1,6 @@
-require 'httparty'
-require 'dotenv'
-require 'table_print'
 
 require_relative 'channel'
 require_relative 'user'
-
-
-Dotenv.load
-
 
 class Workspace
 
@@ -15,8 +8,8 @@ class Workspace
     attr_accessor :selected
 
     def initialize
-      @users = user.list_all
-      @channels = channel.list_all
+      @users = User.list_all
+      @channels = Channel.list_all
       @selected = nil
     end
 

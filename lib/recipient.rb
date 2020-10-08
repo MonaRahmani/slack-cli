@@ -1,16 +1,12 @@
-require 'dotenv'
 require 'httparty'
-require_relative 'user'
-require_relative 'channel'
-require_relative 'slack'
 
-Dotenv.load
-class SlackAPIError < Exception; end
+
+class SlackAPIError < StandardError; end
 
 class Recipient
 
-    USER_LIST = 'https://slack.com/api/conversations.list'
-    CHANNEL_LIST = 'https://slack.com/api/users.list'
+    CHANNEL_LIST = 'https://slack.com/api/conversations.list'
+    USER_LIST = 'https://slack.com/api/users.list'
     MESSAGE_LIST = 'https://slack.com/api/chat.postMessage'
 
     attr_reader :slack_id, :name
@@ -30,10 +26,10 @@ class Recipient
 
 
     def self.get(url, params)
-      response = HTTParty.get(url, params)
+      response = HTTParty.get(url, query: params)
 
-      if response.code != 200
-        raise SlackAPIError, "API call failed with code #{response.code} and reason #{response['reason']}"
+      if !response["ok"]
+        raise SlackAPIError, "API call failed with reason #{response['error']}"
       end
       return response
     end
