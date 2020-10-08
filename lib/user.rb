@@ -1,8 +1,4 @@
-require 'httparty'
 require_relative 'recipient'
-require 'dotenv'
-
-Dotenv.load
 
 
 class User < Recipient
@@ -25,7 +21,7 @@ class User < Recipient
     def self.list_all
       users = []
       # get method defined in recipient.rb
-      response = get(USER_LIST, query: {token: ENV['SLACK_TOKEN']})
+      response = get(USER_LIST, {token: ENV['SLACK_TOKEN']})
 
       response["members"].each do |user|
         new_user = new(
