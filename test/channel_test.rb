@@ -25,21 +25,21 @@ describe "channel" do
         VCR.use_cassette('channel_list') do
           response = Channel.get('https://slack.com/api/conversations.list',
                                  {token: ENV['SLACK_TOKEN']})
-          expect(response).must_be_kind_of HTTParty::Response
-          expect(response['ok']).must_equal true
         end
+        expect(response).must_be_kind_of HTTParty::Response
+        expect(response['ok']).must_equal true
       end
     end
 
     it 'raise an error when it fails to response(bad url/api)' do
       VCR.use_cassette('channel_list') do
-        expect { User.get('https://slack.com/api/', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
+        expect { Channel.get('https://slack.com/api/test', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
       end
     end
     describe 'self.list_all' do
       it 'returns a list of channel' do
         VCR.use_cassette('channel_list') do
-          channels = User.list_all
+          channels = Channel.list_all
           expect(channels).must_be_kind_of Array
         end
       end
