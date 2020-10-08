@@ -1,17 +1,12 @@
 #!/usr/bin/env ruby
-
 require_relative 'workspace'
 require 'dotenv'
 require 'table_print'
-
-
 def main
   Dotenv.load
   puts "Welcome to the Ada Slack CLI!"
   workspace = Workspace.new
-
   user_input = request_input
-
   until user_input == "quit"
     case user_input
     when "list user"
@@ -49,7 +44,6 @@ def main
   end
   puts "Thank you for using the Ada Slack CLI"
 end
-
 def request_input
   puts "please select one from the list: "
   puts "what would you like to do: "
@@ -63,9 +57,4 @@ def request_input
   puts "======================================="
   return  gets.chomp.downcase
 end
-
 main if __FILE__ == $PROGRAM_NAME
-
-
-
-

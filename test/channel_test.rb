@@ -1,7 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/channel'
 require_relative '../lib/recipient'
-
 describe "channel" do
   describe "instance of Channel class" do
     before do
@@ -18,7 +17,6 @@ describe "channel" do
         expect(@channel).must_be_kind_of Channel
       end
     end
-
     describe 'self.get' do
       it 'return a list of channels' do
         response = {}
@@ -30,7 +28,6 @@ describe "channel" do
         expect(response['ok']).must_equal true
       end
     end
-
     it 'raise an error when it fails to response(bad url/api)' do
       VCR.use_cassette('channel_list') do
         expect { Channel.get('https://slack.com/api/test', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
