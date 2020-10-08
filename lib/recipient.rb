@@ -5,11 +5,13 @@ require_relative 'channel'
 require_relative 'slack'
 
 Dotenv.load
+class SlackAPIError < Exception; end
 
 class Recipient
 
     USER_LIST = 'https://slack.com/api/conversations.list'
     CHANNEL_LIST = 'https://slack.com/api/users.list'
+    MESSAGE_LIST = 'https://slack.com/api/chat.postMessage'
 
     attr_reader :slack_id, :name
 
@@ -19,6 +21,11 @@ class Recipient
     end
 
     def send_message(message)
+      response = HTTParty.post(MESSAGE_LIST, body: {
+          token: ENV['SLACK_TOKEN'],
+          text: message,
+          channel: @session
+      })
     end
 
 
