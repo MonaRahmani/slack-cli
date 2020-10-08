@@ -17,14 +17,6 @@ describe "User" do
       it "creates instance of User" do
         expect(@user).must_be_kind_of User
       end
-
-      it "attribute of the instance" do
-        expect(@user.name).must_be_kind_of String
-        expect(@user.slack_id).must_be_kind_of String
-        expect(@user.real_name).must_be_kind_of String
-        expect(@user.status_text).must_be_kind_of String
-        expect(@user.status_emoji).must_be_kind_of String
-      end
     end
 
     describe 'self.get' do
@@ -39,7 +31,7 @@ describe "User" do
 
       it 'raise an error when it fails to response(bad url/api)' do
         VCR.use_cassette('user_list') do
-          expect { User.get('https://slack.com/api/users')}.must_raise SlackError
+          expect { User.get('https://slack.com/api/users', {token: ENV['SLACK_TOKEN']})}.must_raise SlackError
         end
       end
       describe 'self.list_all' do
@@ -57,16 +49,3 @@ end
 
 
 
-# describe "Slack ser class" do
-
-#
-#   describe "User instantiation" do
-#     it 'is an instance of user' do
-#       expect(@user).must_be_kind_of Slack::User
-#     end
-#
-#     it 'sets users to an array' do
-#       expect(@user.list_all).must_be_kind_of Array
-#     end
-#   end
-# end
