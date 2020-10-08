@@ -20,8 +20,12 @@ class Recipient
       response = HTTParty.post(MESSAGE_LIST, body: {
           token: ENV['SLACK_TOKEN'],
           text: message,
-          channel: @session
+          channel: @slack_id
       })
+      !if response['ok'] == true
+         raise SlackAPIError, "API call failed with reason #{response['error']}"
+       end
+      return true
     end
 
 

@@ -14,15 +14,38 @@ def main
 
   until user_input == "quit"
     case user_input
-    when "list_user"
-      tb workspace.users, :name, :slack_id, :real_name
-    when "list_channel"
-      tb workspace.channels, :name, :topic, :member_count, :slack_id
+    when "list user"
+      puts workspace.users, :name, :slack_id, :real_name
+    when "list channel"
+      puts workspace.channels, :name, :topic, :member_count, :slack_id
+    when "select user"
+      puts "What is the slack Id"
+      id = gets.chomp
+      unless workspace.select_user(id).empty?
+        puts "enter details to see information about #{id}"
+        puts "enter send message to send a message to #{id}"
+      end
+    when "select channel"
+      puts "please type the channel name: "
+      id = gets.chomp
+      unless workspace.select_channel(id).empty?
+        puts "enter details to see information about #{id}"
+        puts "enter send message to send a message to #{id}"
+      end
+    when "details"
+      puts workspace.show_details
+    when "send message"
+      puts "please type your message: "
+      message = gets.chomp
+      unless workspace.send_message(message).empty?
+        puts "your messaged sent"
+      end
     when "quit"
       break
-    else
-      user_input = request_input
     end
+    puts "======================================="
+    puts "would you like to select another option?"
+    user_input = request_input
   end
   puts "Thank you for using the Ada Slack CLI"
 end
@@ -30,9 +53,14 @@ end
 def request_input
   puts "please select one from the list: "
   puts "what would you like to do: "
-  puts "list_user"
-  puts "list_channel"
+  puts "list user"
+  puts "list channel"
+  puts "select user"
+  puts "select channel"
+  puts "details"
+  puts "send message"
   puts "quit"
+  puts "======================================="
   return  gets.chomp.downcase
 end
 
@@ -41,17 +69,3 @@ main if __FILE__ == $PROGRAM_NAME
 
 
 
-#========do not remove below lines **sure, but the feedback states this should be hidden in another file.
-# looping and get the name of each channel
-# pp response
-# response['channels'].each do |channel|
-#   p channel['name']
-# end
-#=======================
-# pp user_response
-# user_response["members"].each do |member|
-#   p member["name"]
-# end
-#=============
-# response = HTTParty.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
-# user_response = HTTParty.get('https://slack.com/api/users.list', query: {token: ENV['SLACK_TOKEN']})

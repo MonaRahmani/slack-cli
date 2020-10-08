@@ -46,10 +46,19 @@ class Workspace
     # when user type "details the program should print out details for the currently selected recipient
     def show_details
       # will call the details method of the previously selected user or channel
-      @selected.details
+      if @selected.nil?
+        puts "nothing selected"
+      else
+        return @selected.details
+      end
     end
 
-    def send_message
 
+    def send_message(message)
+      if @selected.nil?
+        puts "nothing selected"
+      else
+        return send_message(message)
+      end
     end
 end

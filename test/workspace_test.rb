@@ -19,6 +19,7 @@ describe "workspace" do
       expect(@workspace.users).must_be_kind_of Array
     end
   end
+
   #select_channel
   describe "select_channel" do
     it "select specific channel" do
@@ -26,7 +27,7 @@ describe "workspace" do
     end
 
     it "returns the selected channel" do
-      expect(@workspace.select_channel("random")).must_be_kind_of String
+      expect(@workspace.select_channel("random")).must_be_kind_of Channel
     end
 
     expect(@workspace.select_channel("random")).must_equal @workspace.selected.name
@@ -43,7 +44,7 @@ describe "workspace" do
     end
 
     it "returns the selected user" do
-      expect(@workspace.select_user("slackbot")).must_be_kind_of String
+      expect(@workspace.select_user("slackbot")).must_be_kind_of User
     end
 
     expect(@workspace.select_user("slackbot")).must_equal @workspace.selected.name
