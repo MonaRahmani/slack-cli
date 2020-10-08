@@ -1,7 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/user'
 require_relative '../lib/recipient'
-
 describe "User" do
   describe "instance of the class User" do
     before do
@@ -18,7 +17,6 @@ describe "User" do
         expect(@user).must_be_kind_of User
       end
     end
-
     describe 'self.get' do
       it 'returns list of users' do
         response = {}
@@ -28,7 +26,6 @@ describe "User" do
         expect(response).must_be_kind_of HTTParty::Response
         expect(response['ok']).must_equal true
       end
-
       it 'raise an error when it fails to response(bad url/api)' do
         VCR.use_cassette('user_list') do
           expect { User.get('https://slack.com/api/users', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
@@ -45,7 +42,3 @@ describe "User" do
     end
   end
 end
-
-
-
-
