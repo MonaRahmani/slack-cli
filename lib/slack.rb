@@ -11,21 +11,6 @@ def main
   puts "Welcome to the Ada Slack CLI!"
   workspace = Workspace.new
 
-  #========do not remove below lines **sure, but the feedback states this should be hidden in another file.
-  # looping and get the name of each channel
-  # pp response
-  # response['channels'].each do |channel|
-  #   p channel['name']
-  # end
-  #=======================
-  # pp user_response
-  # user_response["members"].each do |member|
-  #   p member["name"]
-  # end
-  #=============
-  # response = HTTParty.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
-  # user_response = HTTParty.get('https://slack.com/api/users.list', query: {token: ENV['SLACK_TOKEN']})
-
   user_input = request_input
 
   until user_input == "quit"
@@ -53,3 +38,21 @@ def request_input
 end
 
 main if __FILE__ == $PROGRAM_NAME
+
+
+
+
+#========do not remove below lines **sure, but the feedback states this should be hidden in another file.
+# looping and get the name of each channel
+# pp response
+# response['channels'].each do |channel|
+#   p channel['name']
+# end
+#=======================
+# pp user_response
+# user_response["members"].each do |member|
+#   p member["name"]
+# end
+#=============
+# response = HTTParty.get('https://slack.com/api/conversations.list', query: {token: ENV['SLACK_TOKEN']})
+# user_response = HTTParty.get('https://slack.com/api/users.list', query: {token: ENV['SLACK_TOKEN']})

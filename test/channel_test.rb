@@ -1,33 +1,57 @@
 require_relative 'test_helper'
 require_relative '../lib/channel'
+require_relative '../lib/recipient'
 
 describe "channel" do
-  describe "self.get" do
-    it "return a list of channels" do
-      response = {}
-      vcr.use_cassette("channel_list") do
-        response = Channel.get('https://slack.com/api/conversations.list')
-      end
-      expect(response).must_be_kind_of HTTParty::Response
-      expect(response["ok"]).must_equal true
-    end
-    it "raise an error when it fails to response(bad url/api)" do
-      vcr.use_cassette("channel_list") do
-        expect{User.get('https://slack.com/api/ch')}.must_raise SlackError
-      end
-    end
-    describe "self.list_all" do
-      it "returns a list of channels" do
-        channels = []
-        vcr.use_cassette("user_list") do
-          channels = Channel.list_all
-        end
-        expect(channels).must_be_kind_of Array
-      end
+  describe "instance of Channel class" do
+    before do
+      @channel = Channel.new(
+          slack_id: "D45HG123E",
+          name: "random",
+          # not sure topic:{},
+          topic:"test",
+          member_count: "12"
+      )
     end
 
+    describe "initializer" do
+      it "creates instance of channel" do
+        expect(@channel).must_be_kind_of Channel
+      end
+      it "attribute of the instance" do
+        expect(@channel.slack_id).must_be_kind_of String
+        expect(@channel.name).must_be_kind_of String
+        expect(@channel.topic).must_be_kind_of String
+        expect(@channel.member_count).must_be_kind_of String
+      end
+    end
+  end
+
+  describe "get_channels" do
+    it "gets all the slack channel" do
+      VCR.use_cassette("channels_list")
+      response = channel.get(
+          'https://slack.com/api/conversations.list',
+          query: {token: ENV['SLACK_TOKEN']}
+      )
+      expect(response["channels"]).must_be_kind_of Array
+      expect(response.code).must_equal 200
+      expect(response["ok"]).must_equal true
+    end
+  end
+
+  it "will raise an exception if the search fails" do
+    VCR.use_cassette("channel_find") do
+      expect {
+        channel.get(
+            'https://slack.com/api/conversations.list',
+            query: {token: ENV['SLACK_TOKEN']}
+        )
+      }.must_raise SearchError
+    end
   end
 end
+
 
 
 
