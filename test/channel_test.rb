@@ -7,7 +7,6 @@ describe "channel" do
       @channel = Channel.new(
           slack_id: "D45HG123E",
           name: "random",
-          # not sure topic:{},
           topic:"test",
           member_count: "12"
       )
@@ -43,8 +42,6 @@ describe "channel" do
     end
   end
 end
-
-
 
 
 
