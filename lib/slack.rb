@@ -2,16 +2,20 @@
 require_relative 'workspace'
 require 'dotenv'
 require 'table_print'
+require 'terminal-table'
+
 def main
   Dotenv.load
   puts "Welcome to the Ada Slack CLI!"
   workspace = Workspace.new
+
   user_input = request_input
   until user_input == "quit"
+
     case user_input
-    when "list user"
+    when "list users"
       puts workspace.users, :name, :slack_id, :real_name
-    when "list channel"
+    when "list channels"
       puts workspace.channels, :name, :topic, :member_count, :slack_id
     when "select user"
       puts "What is the slack Id"
@@ -21,42 +25,38 @@ def main
         puts "enter send message to send a message to #{id}"
       end
     when "select channel"
-      puts "please type the channel name: "
+      puts "Please type the channel name: "
       id = gets.chomp
       if workspace.select_channel(id).nil?
         puts "#{id} is not a channel, try again?"
       else
         puts "enter details to see information about #{id}"
-        puts "enter send message to send a message to #{id}"
+        puts "enter 'send message' to send a message to #{id}"
       end
     when "details"
       puts workspace.show_details
     when "send message"
-      puts "please type your message: "
+      puts "Please type your message: "
       message = gets.chomp
       unless workspace.send_message(message).empty?
-        puts "your messaged sent"
+        puts "Your message was sent!"
       end
     when "quit"
       break
     end
     puts "======================================="
-    puts "would you like to select another option?"
+    puts "Would you like to select another option?"
     user_input = request_input
   end
   puts "Thank you for using the Ada Slack CLI"
 end
 def request_input
-  puts "please select one from the list: "
-  puts "what would you like to do: "
-  puts "list user"
-  puts "list channel"
-  puts "select user"
-  puts "select channel"
-  puts "details"
-  puts "send message"
-  puts "quit"
-  puts "======================================="
+  options_table = [[1, 'List Users'], [2, 'List Channels'], [3, 'Select User'],
+                   [4, 'Select Channel'], [5, 'Details'], [6, 'Send Message'], [7, 'QUIT']]
+
+  options = Terminal::Table.new :title => 'What would you like to do?', :rows => options_table
+  puts options
+
   return  gets.chomp.downcase
 end
 main if __FILE__ == $PROGRAM_NAME
