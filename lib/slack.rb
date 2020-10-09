@@ -20,7 +20,7 @@ def main
     when "select user", '3'
       puts "What is the slack Id"
       id = gets.chomp
-      unless workspace.select_user(id).empty?
+      unless workspace.select_user(id).nil?
         puts "enter details to see information about #{id}"
         puts "enter send message to send a message to #{id}"
       end
