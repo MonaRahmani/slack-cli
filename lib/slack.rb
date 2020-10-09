@@ -23,7 +23,9 @@ def main
     when "select channel"
       puts "please type the channel name: "
       id = gets.chomp
-      unless workspace.select_channel(id).empty?
+      if workspace.select_channel(id).nil?
+        puts "#{id} is not a channel, try again?"
+      else
         puts "enter details to see information about #{id}"
         puts "enter send message to send a message to #{id}"
       end

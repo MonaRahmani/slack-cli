@@ -1,5 +1,6 @@
 require_relative 'test_helper'
 require_relative '../lib/workspace'
+
 describe "workspace" do
   before do
     VCR.use_cassette("workspace") do
@@ -24,12 +25,15 @@ describe "workspace" do
     end
     it "returns the selected channel" do
       expect(@workspace.select_channel("random")).must_be_kind_of Channel
+      expect(@workspace.selected.slack_id).must_equal 'C01C0H7R9QS'
+      expect(@workspace.select_channel("wrongchannel")).must_be_nil
     end
-    expect(@workspace.select_channel("random")).must_equal @workspace.selected.name
+
+    it "let user know when the selected channel is nil" do
+      expect(@workspace.select_channel("wrongchannel")).must_be_nil
+    end
   end
-  it "let user know when the selected channel is nil" do
-    expect(@workspace.select_channel("notexist")).must_equal "no channel found"
-  end
+
   # select_user
   describe "select_user" do
     it "select specific user" do
@@ -37,20 +41,55 @@ describe "workspace" do
     end
     it "returns the selected user" do
       expect(@workspace.select_user("slackbot")).must_be_kind_of User
+      selected_user = @workspace.select_user('pbui17')
+      expect(@workspace.selected.slack_id).must_equal 'U01C0H7QZRQ'
     end
-    expect(@workspace.select_user("slackbot")).must_equal @workspace.selected.name
-    expect(@workspace.selected.slack_id.must_equal).must_equal "USLACKBOT"
+
+    it "if selected user doesnt exit, return nil" do
+      expect(@workspace.select_user("hgrdsd")).must_be_nil
+    end
   end
-  it "let user know when the selected user is nil" do
-    expect(@workspace.select_user("notexist")).must_equal "no user found"
-  end
+
+  #=====
   describe "show_details" do
     it "print out details" do
       expect(@workspace).must_respond_to :show_details
     end
+
     it "print out details for the currently selected recipient " do
-      expect(@workspace.selected.show_details).must_be_kind_of Channel
-      expect(@workspace.selected.show_details).must_be_kind_of User
+      @workspace.select_user('slackbot')
+      expect(@workspace.show_details).must_be_kind_of String
+      @workspace.select_channel('random')
+      expect(@workspace.show_details).must_be_kind_of String
+    end
+
+    it "invalid info returns nil" do
+      @workspace.select_user('hgddr')
+      expect(@workspace.show_details).must_be_nil
+      @workspace.select_channel('notchtgh')
+      expect(@workspace.show_details).must_be_nil
+    end
+  end
+
+  describe "send_message" do
+    it "respond to the call" do
+      expect(@workspace).must_respond_to :send_message
+    end
+
+    it "returns nil for selecting invalid info" do
+      @workspace.select_user('invalid')
+      expect(@workspace.send_message('test')).must_be_nil
+      @workspace.select_channel('notchtkk')
+      expect(@workspace.send_message('testtest')).must_be_nil
+    end
+
+    it "shows selected recipient info" do
+      VCR.use_cassette("this is a test") do
+        @workspace.select_user('slackbot')
+        expect(@workspace.send_message('test message')).must_equal true
+        @workspace.select_channel('random')
+        expect(@workspace.send_message('test message')).must_equal true
+      end
     end
   end
 end

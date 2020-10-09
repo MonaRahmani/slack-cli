@@ -6,6 +6,7 @@ class Recipient
   CHANNEL_LIST = 'https://slack.com/api/conversations.list'
   USER_LIST = 'https://slack.com/api/users.list'
   MESSAGE_LIST = 'https://slack.com/api/chat.postMessage'
+
   attr_reader :slack_id, :name
 
   def initialize(slack_id:, name:)
