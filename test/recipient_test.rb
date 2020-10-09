@@ -4,7 +4,7 @@ require_relative '../lib/recipient'
 
 describe Recipient do
   before do
-    @recipient = Recipient.new('T016J51T03T', 'test')
+    @recipient = Recipient.new(slack_id: 'T016J51T03T', name: 'test')
   end
 
   describe 'initializer' do
@@ -19,7 +19,7 @@ describe Recipient do
 
   describe 'list_all' do
     it "raise error if it's not implemented in a child class" do
-      expect do @recipient.list_all
+      expect do Recipient.list_all
       end.must_raise NotImplementedError
     end
   end
@@ -33,7 +33,7 @@ describe Recipient do
 
   describe 'send_message' do
     before do
-      @correct_recipient = Recipient.new('C01C0H7R9QS', 'random')
+      @correct_recipient = Recipient.new(slack_id: 'U017GNU2E20', name: 'Mona')
     end
     it "send_message" do
       expect(@recipient).must_respond_to :send_message
@@ -49,7 +49,7 @@ describe Recipient do
 
     it "works and message sends if recipient is correct" do
       VCR.use_cassette('test message sent') do
-        expect(@correct_recipient).send_message("checking to see if our test send").must_equal true
+        expect(@correct_recipient.send_message("checking to see if our test send")).must_equal true
       end
 
     end

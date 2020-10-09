@@ -24,8 +24,8 @@ describe "workspace" do
       expect(@workspace).must_respond_to :select_channel
     end
     it "returns the selected channel" do
-      expect(@workspace.select_channel("random")).must_be_kind_of Channel
-      expect(@workspace.selected.slack_id).must_equal 'C01C0H7R9QS'
+      expect(@workspace.select_channel("general")).must_be_kind_of Channel
+      expect(@workspace.selected.slack_id).must_equal 'C0165N9BX3M'
       expect(@workspace.select_channel("wrongchannel")).must_be_nil
     end
 
@@ -42,7 +42,7 @@ describe "workspace" do
     it "returns the selected user" do
       expect(@workspace.select_user("slackbot")).must_be_kind_of User
       selected_user = @workspace.select_user('pbui17')
-      expect(@workspace.selected.slack_id).must_equal 'U01C0H7QZRQ'
+      expect(@workspace.selected.slack_id).must_equal 'U016VKEDCFR'
     end
 
     it "if selected user doesnt exit, return nil" do
@@ -59,7 +59,7 @@ describe "workspace" do
     it "print out details for the currently selected recipient " do
       @workspace.select_user('slackbot')
       expect(@workspace.show_details).must_be_kind_of String
-      @workspace.select_channel('random')
+      @workspace.select_channel('general')
       expect(@workspace.show_details).must_be_kind_of String
     end
 
@@ -87,7 +87,7 @@ describe "workspace" do
       VCR.use_cassette("this is a test") do
         @workspace.select_user('slackbot')
         expect(@workspace.send_message('test message')).must_equal true
-        @workspace.select_channel('random')
+        @workspace.select_channel('test-channel2')
         expect(@workspace.send_message('test message')).must_equal true
       end
     end

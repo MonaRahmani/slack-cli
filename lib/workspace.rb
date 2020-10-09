@@ -41,15 +41,18 @@ class Workspace
       return @selected.details
     end
   end
-end
 
-
-def send_message(message)
-  if @selected.nil?
-    puts "no recipient selected"
-  else
-    puts "#{@selected.send_message(message)}"
-    return @selected.send_message(message)
+  def send_message(message)
+    if @selected.nil?
+      puts "no recipient selected"
+    else
+      puts "#{@selected.send_message(message)}"
+      return @selected.send_message(message)
+    end
   end
 end
+
+
+
+
 

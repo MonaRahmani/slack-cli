@@ -20,7 +20,7 @@ class Recipient
         text: message,
         channel: @slack_id
     })
-    !if response['ok'] == true
+    unless response['ok'] == true
        raise SlackAPIError, "API call failed with reason #{response['error']}"
      end
     return true
