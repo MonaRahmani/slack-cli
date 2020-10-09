@@ -41,7 +41,7 @@ def main
       unless workspace.send_message(message).empty?
         puts "Your message was sent!"
       end
-    when "quit"
+    when "quit", '7'
       break
     end
     puts "======================================="
