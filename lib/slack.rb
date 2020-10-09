@@ -38,7 +38,7 @@ def main
     when "send message", '6'
       puts "Please type your message: "
       message = gets.chomp
-      unless workspace.send_message(message).empty?
+      unless workspace.send_message(message).nil?
         puts "Your message was sent!"
       end
     when "quit", '7'
