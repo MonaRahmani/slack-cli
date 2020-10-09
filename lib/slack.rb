@@ -13,18 +13,18 @@ def main
   until user_input == "quit"
 
     case user_input
-    when "list users"
+    when "list users", '1'
       tp workspace.users, :name, :slack_id, :real_name
-    when "list channels"
+    when "list channels", '2'
       tp workspace.channels, :name, :topic, :member_count, :slack_id
-    when "select user"
+    when "select user", '3'
       puts "What is the slack Id"
       id = gets.chomp
       unless workspace.select_user(id).empty?
         puts "enter details to see information about #{id}"
         puts "enter send message to send a message to #{id}"
       end
-    when "select channel"
+    when "select channel", '4'
       puts "Please type the channel name: "
       id = gets.chomp
       if workspace.select_channel(id).nil?
@@ -33,9 +33,9 @@ def main
         puts "enter details to see information about #{id}"
         puts "enter 'send message' to send a message to #{id}"
       end
-    when "details"
+    when "details", '5'
       puts workspace.show_details
-    when "send message"
+    when "send message", '6'
       puts "Please type your message: "
       message = gets.chomp
       unless workspace.send_message(message).empty?
