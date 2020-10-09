@@ -21,8 +21,8 @@ class Recipient
         channel: @slack_id
     })
     unless response['ok'] == true
-       raise SlackAPIError, "API call failed with reason #{response['error']}"
-     end
+      raise SlackAPIError, "API call failed with reason #{response['error']}"
+    end
     return true
   end
 
