@@ -8,7 +8,8 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'minitest/skip_dsl'
 require 'vcr'
-
+require_relative '../lib/user'
+require_relative '../lib/recipient'
 require "webmock/minitest"
 require "dotenv"
 require_relative "../lib/slack"

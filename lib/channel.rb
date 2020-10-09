@@ -1,16 +1,21 @@
 require_relative 'recipient'
+
 class Channel < Recipient
+
   attr_reader :topic, :member_count
+
   def initialize(name:, slack_id:, topic:, member_count:)
     super(slack_id: slack_id, name: name)
     @topic = topic
     @member_count = member_count
   end
+
   def details
     #prints info for currently selected channel, if not, should let user know and return to main command prompt
     detailed_info = "Slack_id: #{slack_id}, Name: #{@name}, Member Count: #{@member_count}"
     return detailed_info
   end
+
   def self.list_all
     response = get(CHANNEL_LIST, {token: ENV['SLACK_TOKEN']})
     channels = []
@@ -25,4 +30,5 @@ class Channel < Recipient
     end
     return channels
   end
+
 end

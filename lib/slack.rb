@@ -5,6 +5,7 @@ require 'table_print'
 require 'terminal-table'
 
 def main
+
   Dotenv.load
   puts "Welcome to the Ada Slack CLI!"
   workspace = Workspace.new

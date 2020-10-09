@@ -3,6 +3,7 @@ require_relative '../lib/recipient'
 
 
 describe Recipient do
+
   before do
     @recipient = Recipient.new(slack_id: 'T016J51T03T', name: 'test')
   end

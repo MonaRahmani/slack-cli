@@ -1,7 +1,8 @@
 require_relative 'test_helper'
-require_relative '../lib/user'
-require_relative '../lib/recipient'
+
+
 describe "User" do
+
   describe "instance of the class User" do
     before do
       @user = User.new(
@@ -12,11 +13,13 @@ describe "User" do
           status_emoji: ":sunrise:"
       )
     end
+
     describe "User instantiation" do
       it "creates instance of User" do
         expect(@user).must_be_kind_of User
       end
     end
+
     describe 'self.get' do
       it 'returns list of users' do
         response = {}
@@ -31,6 +34,7 @@ describe "User" do
           expect { User.get('https://slack.com/api/users', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
         end
       end
+
       describe 'self.list_all' do
         it 'returns a list of users' do
           VCR.use_cassette('user_list') do

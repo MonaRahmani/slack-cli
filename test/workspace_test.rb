@@ -2,6 +2,7 @@ require_relative 'test_helper'
 require_relative '../lib/workspace'
 
 describe "workspace" do
+
   before do
     VCR.use_cassette("workspace") do
       @workspace = Workspace.new
@@ -11,6 +12,7 @@ describe "workspace" do
       @test_channel = @workspace.select_channel("random")
     end
   end
+
   describe "initializer" do
     it "check the workspace instances" do
       expect(@workspace.users).must_be_kind_of Array
@@ -18,7 +20,6 @@ describe "workspace" do
     end
   end
 
-  #select_channel
   describe "select_channel" do
     it "select specific channel" do
       expect(@workspace).must_respond_to :select_channel
@@ -34,7 +35,6 @@ describe "workspace" do
     end
   end
 
-  # select_user
   describe "select_user" do
     it "select specific user" do
       expect(@workspace).must_respond_to :select_user
@@ -50,7 +50,6 @@ describe "workspace" do
     end
   end
 
-  #=====
   describe "show_details" do
     it "print out details" do
       expect(@workspace).must_respond_to :show_details

@@ -1,7 +1,9 @@
 require_relative 'test_helper'
 require_relative '../lib/channel'
 require_relative '../lib/recipient'
+
 describe "channel" do
+
   describe "instance of Channel class" do
     before do
       @channel = Channel.new(
@@ -11,11 +13,13 @@ describe "channel" do
           member_count: "12"
       )
     end
+
     describe "Channel instantiation" do
       it "creates instance of Channel" do
         expect(@channel).must_be_kind_of Channel
       end
     end
+
     describe 'self.get' do
       it 'return a list of channels' do
         response = {}
@@ -32,6 +36,7 @@ describe "channel" do
         expect { Channel.get('https://slack.com/api/test', {token: ENV['SLACK_TOKEN']})}.must_raise SlackAPIError
       end
     end
+
     describe 'self.list_all' do
       it 'returns a list of channel' do
         VCR.use_cassette('channel_list') do
@@ -40,6 +45,7 @@ describe "channel" do
         end
       end
     end
+
   end
 end
 
