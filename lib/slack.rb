@@ -14,9 +14,9 @@ def main
 
     case user_input
     when "list users"
-      puts workspace.users, :name, :slack_id, :real_name
+      tp workspace.users, :name, :slack_id, :real_name
     when "list channels"
-      puts workspace.channels, :name, :topic, :member_count, :slack_id
+      tp workspace.channels, :name, :topic, :member_count, :slack_id
     when "select user"
       puts "What is the slack Id"
       id = gets.chomp
