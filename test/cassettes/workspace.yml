@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://slack.com/api/users.list?token=
+    uri: https://slack.com/api/users.list?token=<SLACK_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -19,11 +19,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:47 GMT
+      - Fri, 09 Oct 2020 22:34:45 GMT
       Server:
       - Apache
-      X-Xss-Protection:
-      - '0'
+      X-Slack-Req-Id:
+      - 1a066b96723e3f93a00af6ac38852ec6
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -33,10 +33,6 @@ http_interactions:
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - users:read
-      X-Slack-Req-Id:
-      - 46140e0bb46fd791fc939097f8926920
       X-Slack-Backend:
       - r
       Access-Control-Allow-Origin:
@@ -45,14 +41,16 @@ http_interactions:
       - x-slack-req-id, retry-after
       X-Content-Type-Options:
       - nosniff
+      X-Xss-Protection:
+      - '0'
       Content-Length:
-      - '53'
+      - '59'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-783v,haproxy-edge-pdx-g0kg
+      - haproxy-www-mipp,haproxy-edge-pdx-j73n
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"not_authed"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:47 GMT
+      string: '{"ok":false,"error":"account_inactive"}'
+  recorded_at: Fri, 09 Oct 2020 22:34:45 GMT
 recorded_with: VCR 6.0.0

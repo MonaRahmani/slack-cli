@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://slack.com/api/users.list?token=
+    uri: https://slack.com/api/users.list?token=<SLACK_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -19,11 +19,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:46 GMT
+      - Fri, 09 Oct 2020 22:34:27 GMT
       Server:
       - Apache
-      X-Xss-Protection:
-      - '0'
+      X-Slack-Req-Id:
+      - 31d295865e6e86d73c420e5ac5704899
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -33,10 +33,6 @@ http_interactions:
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - users:read
-      X-Slack-Req-Id:
-      - 6c6854263447c611fcdb405603585f05
       X-Slack-Backend:
       - r
       Access-Control-Allow-Origin:
@@ -45,19 +41,21 @@ http_interactions:
       - x-slack-req-id, retry-after
       X-Content-Type-Options:
       - nosniff
+      X-Xss-Protection:
+      - '0'
       Content-Length:
-      - '53'
+      - '59'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-0ckj,haproxy-edge-pdx-dhzt
+      - haproxy-www-vjrk,haproxy-edge-pdx-9tv4
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"not_authed"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:46 GMT
+      string: '{"ok":false,"error":"account_inactive"}'
+  recorded_at: Fri, 09 Oct 2020 22:34:27 GMT
 - request:
     method: get
-    uri: https://slack.com/api/users?token=
+    uri: https://slack.com/api/users?token=<SLACK_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -74,11 +72,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:46 GMT
+      - Fri, 09 Oct 2020 22:34:27 GMT
       Server:
       - Apache
       X-Slack-Req-Id:
-      - 7dd41d43103a8a6c597f3c1d1f659c4a
+      - 345d80273aaaf6797560c6754329d588
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -103,9 +101,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-wtg8,haproxy-edge-pdx-raf5
+      - haproxy-www-yl80,haproxy-edge-pdx-9hgy
     body:
       encoding: ASCII-8BIT
       string: '{"ok":false,"error":"unknown_method","req_method":"users"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:46 GMT
+  recorded_at: Fri, 09 Oct 2020 22:34:27 GMT
 recorded_with: VCR 6.0.0

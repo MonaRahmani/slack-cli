@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://slack.com/api/test?token=
+    uri: https://slack.com/api/test?token=<SLACK_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -19,11 +19,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:46 GMT
+      - Fri, 09 Oct 2020 22:33:38 GMT
       Server:
       - Apache
       X-Slack-Req-Id:
-      - 000f9ed92766d4450d15b3ad2ca7c8d6
+      - b294ad7682590540780d321f552c15df
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -48,14 +48,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-3g5k,haproxy-edge-pdx-uehx
+      - haproxy-www-8sau,haproxy-edge-pdx-8rbg
     body:
       encoding: ASCII-8BIT
       string: '{"ok":false,"error":"unknown_method","req_method":"test"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:46 GMT
+  recorded_at: Fri, 09 Oct 2020 22:33:38 GMT
 - request:
     method: get
-    uri: https://slack.com/api/conversations.list?token=
+    uri: https://slack.com/api/conversations.list?token=<SLACK_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -72,11 +72,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:47 GMT
+      - Fri, 09 Oct 2020 22:33:38 GMT
       Server:
       - Apache
-      X-Xss-Protection:
-      - '0'
+      X-Slack-Req-Id:
+      - 6989fbf9246aa8f20ac6ed9ca4af8f9c
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -86,10 +86,6 @@ http_interactions:
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - conversations:read
-      X-Slack-Req-Id:
-      - 4f6fd4104d1de4e8aeeec4a8f591198e
       X-Slack-Backend:
       - r
       Access-Control-Allow-Origin:
@@ -98,14 +94,16 @@ http_interactions:
       - x-slack-req-id, retry-after
       X-Content-Type-Options:
       - nosniff
+      X-Xss-Protection:
+      - '0'
       Content-Length:
-      - '53'
+      - '59'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-hd00,haproxy-edge-pdx-snuh
+      - haproxy-www-yo7l,haproxy-edge-pdx-1lmc
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"not_authed"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:47 GMT
+      string: '{"ok":false,"error":"account_inactive"}'
+  recorded_at: Fri, 09 Oct 2020 22:33:38 GMT
 recorded_with: VCR 6.0.0

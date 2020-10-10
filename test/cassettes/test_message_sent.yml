@@ -5,7 +5,7 @@ http_interactions:
     uri: https://slack.com/api/chat.postMessage
     body:
       encoding: UTF-8
-      string: token=&text=checking%20to%20see%20if%20our%20test%20send&channel=U017GNU2E20
+      string: token=<SLACK_TOKEN>&text=checking%20to%20see%20if%20our%20test%20send&channel=U017GNU2E20
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -19,11 +19,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:48 GMT
+      - Fri, 09 Oct 2020 22:33:56 GMT
       Server:
       - Apache
-      X-Xss-Protection:
-      - '0'
+      X-Slack-Req-Id:
+      - eb3d9ff77f3ce23d5d754281326885f5
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -33,10 +33,6 @@ http_interactions:
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - chat:write:bot
-      X-Slack-Req-Id:
-      - 1fc692b7d8ec8495caa57ef4c0acf435
       X-Slack-Backend:
       - r
       Access-Control-Allow-Origin:
@@ -45,14 +41,16 @@ http_interactions:
       - x-slack-req-id, retry-after
       X-Content-Type-Options:
       - nosniff
+      X-Xss-Protection:
+      - '0'
       Content-Length:
-      - '53'
+      - '59'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-vtio,haproxy-edge-pdx-bivi
+      - haproxy-www-oqmd,haproxy-edge-pdx-uln4
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"not_authed"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:48 GMT
+      string: '{"ok":false,"error":"account_inactive"}'
+  recorded_at: Fri, 09 Oct 2020 22:33:56 GMT
 recorded_with: VCR 6.0.0

@@ -5,7 +5,7 @@ http_interactions:
     uri: https://slack.com/api/chat.postMessage
     body:
       encoding: UTF-8
-      string: token=&text=sending%20test&channel=T016J51T03T
+      string: token=<SLACK_TOKEN>&text=sending%20test&channel=T016J51T03T
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -19,11 +19,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 18:34:47 GMT
+      - Fri, 09 Oct 2020 22:33:55 GMT
       Server:
       - Apache
-      X-Xss-Protection:
-      - '0'
+      X-Slack-Req-Id:
+      - 1b6d7d4d20c54aab2f0626bf2ecb7eea
       Referrer-Policy:
       - no-referrer
       Strict-Transport-Security:
@@ -33,10 +33,6 @@ http_interactions:
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - chat:write:bot
-      X-Slack-Req-Id:
-      - 5fa4ce3299bf50785f133445f2ea77b7
       X-Slack-Backend:
       - r
       Access-Control-Allow-Origin:
@@ -45,14 +41,16 @@ http_interactions:
       - x-slack-req-id, retry-after
       X-Content-Type-Options:
       - nosniff
+      X-Xss-Protection:
+      - '0'
       Content-Length:
-      - '53'
+      - '59'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-q86a,haproxy-edge-pdx-hsew
+      - haproxy-www-pqib,haproxy-edge-pdx-5d11
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"not_authed"}'
-  recorded_at: Fri, 09 Oct 2020 18:34:47 GMT
+      string: '{"ok":false,"error":"account_inactive"}'
+  recorded_at: Fri, 09 Oct 2020 22:33:55 GMT
 recorded_with: VCR 6.0.0
