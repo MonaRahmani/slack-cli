@@ -19,38 +19,50 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 22:33:56 GMT
+      - Sat, 10 Oct 2020 20:45:04 GMT
       Server:
       - Apache
       X-Slack-Req-Id:
-      - eb3d9ff77f3ce23d5d754281326885f5
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - 865925ecd1eab6a80eb3a8d8a450fd62
+      X-Oauth-Scopes:
+      - channels:read,chat:write,groups:read,im:read,mpim:read,users:read,calls:read
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Slack-Backend:
+      - r
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      X-Accepted-Oauth-Scopes:
+      - chat:write
       Access-Control-Allow-Headers:
       - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Slack-Backend:
-      - r
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - x-slack-req-id, retry-after
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - '0'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
       Content-Length:
-      - '59'
+      - '354'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-oqmd,haproxy-edge-pdx-uln4
+      - haproxy-www-eo0o,haproxy-edge-pdx-wg8q
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"account_inactive"}'
-  recorded_at: Fri, 09 Oct 2020 22:33:56 GMT
+      string: '{"ok":true,"channel":"D01D0HAGDGQ","ts":"1602362704.000100","message":{"bot_id":"B01BV1NRTQW","type":"message","text":"checking
+        to see if our test send","user":"U01CEC92AM7","ts":"1602362704.000100","team":"T016J51T03T","bot_profile":{"id":"B01BV1NRTQW","deleted":false,"name":"Fire
+        - Mona - API Project","updated":1602362641,"app_id":"A01BM0N75U7","icons":{"image_36":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_36.png","image_48":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_48.png","image_72":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/service_72.png"},"team_id":"T016J51T03T"}}}'
+  recorded_at: Sat, 10 Oct 2020 20:45:01 GMT
 recorded_with: VCR 6.0.0

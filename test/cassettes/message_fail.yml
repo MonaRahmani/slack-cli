@@ -19,38 +19,48 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 09 Oct 2020 22:33:55 GMT
+      - Sat, 10 Oct 2020 20:45:04 GMT
       Server:
       - Apache
       X-Slack-Req-Id:
-      - 1b6d7d4d20c54aab2f0626bf2ecb7eea
-      Referrer-Policy:
-      - no-referrer
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
+      - 35a4a6f85388b185a7398317d8ae5e2a
+      X-Oauth-Scopes:
+      - channels:read,chat:write,groups:read,im:read,mpim:read,users:read,calls:read
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Slack-Backend:
+      - r
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      X-Accepted-Oauth-Scopes:
+      - chat:write
       Access-Control-Allow-Headers:
       - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
         x-b3-sampled, x-b3-flags
       Vary:
       - Accept-Encoding
-      X-Slack-Backend:
-      - r
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - x-slack-req-id, retry-after
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - '0'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
       Content-Length:
-      - '59'
+      - '60'
       Content-Type:
       - application/json; charset=utf-8
       X-Via:
-      - haproxy-www-pqib,haproxy-edge-pdx-5d11
+      - haproxy-www-n7fv,haproxy-edge-pdx-4ut7
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":false,"error":"account_inactive"}'
-  recorded_at: Fri, 09 Oct 2020 22:33:55 GMT
+      string: '{"ok":false,"error":"channel_not_found"}'
+  recorded_at: Sat, 10 Oct 2020 20:45:01 GMT
 recorded_with: VCR 6.0.0

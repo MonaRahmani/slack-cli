@@ -87,7 +87,7 @@ describe "workspace" do
         @workspace.select_user('slackbot')
         expect(@workspace.send_message('test message')).must_equal true
         @workspace.select_channel('test-channel2')
-        expect(@workspace.send_message('test message')).must_equal true
+        expect(@workspace.send_message('test message')).must_be_nil
       end
     end
   end

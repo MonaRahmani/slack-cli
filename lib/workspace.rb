@@ -44,7 +44,12 @@ class Workspace
     if @selected.nil?
       puts "No recipient selected"
     else
-      return @selected.send_message(message)
+      begin
+        return @selected.send_message(message)
+      rescue SlackAPIError => exception
+        puts "error: #{exception}"
+      end
+
     end
   end
 end
