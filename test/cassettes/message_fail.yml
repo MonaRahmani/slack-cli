@@ -63,4 +63,61 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"ok":false,"error":"channel_not_found"}'
   recorded_at: Sat, 10 Oct 2020 20:45:01 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: token=&text=sending%20test&channel=T016J51T03T
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 10 Oct 2020 23:51:30 GMT
+      Server:
+      - Apache
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot
+      X-Slack-Req-Id:
+      - 360433957333e6171bc35becd0ced334
+      X-Slack-Backend:
+      - r
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '53'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-0tj6,haproxy-edge-pdx-1g64
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"not_authed"}'
+  recorded_at: Sat, 10 Oct 2020 23:51:27 GMT
 recorded_with: VCR 6.0.0

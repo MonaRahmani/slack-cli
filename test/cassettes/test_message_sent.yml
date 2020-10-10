@@ -65,4 +65,61 @@ http_interactions:
         to see if our test send","user":"U01CEC92AM7","ts":"1602362704.000100","team":"T016J51T03T","bot_profile":{"id":"B01BV1NRTQW","deleted":false,"name":"Fire
         - Mona - API Project","updated":1602362641,"app_id":"A01BM0N75U7","icons":{"image_36":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_36.png","image_48":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_48.png","image_72":"https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/service_72.png"},"team_id":"T016J51T03T"}}}'
   recorded_at: Sat, 10 Oct 2020 20:45:01 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: token=&text=checking%20to%20see%20if%20our%20test%20send&channel=U017GNU2E20
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 10 Oct 2020 23:51:30 GMT
+      Server:
+      - Apache
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot
+      X-Slack-Req-Id:
+      - 4f6682a00ee00a34426d5711c5733d9f
+      X-Slack-Backend:
+      - r
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '53'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-883n,haproxy-edge-pdx-rshi
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"not_authed"}'
+  recorded_at: Sat, 10 Oct 2020 23:51:27 GMT
 recorded_with: VCR 6.0.0

@@ -615,4 +615,59 @@ http_interactions:
         having while testing!","creator":"U017GT4GAGL","last_set":1602214932},"previous_names":[],"num_members":0},{"id":"C01CBGV0490","name":"in-office","is_channel":true,"is_group":false,"is_im":false,"created":1602276867,"is_archived":false,"is_general":false,"unlinked":0,"name_normalized":"in-office","is_shared":false,"parent_conversation":null,"creator":"U017D723GQM","is_ext_shared":false,"is_org_shared":false,"shared_team_ids":["T016J51T03T"],"pending_shared":[],"pending_connected_team_ids":[],"is_pending_ext_shared":false,"is_member":false,"is_private":false,"is_mpim":false,"topic":{"value":"","creator":"","last_set":0},"purpose":{"value":"For
         connecting with staff and other students who are on site at Ada","creator":"U017D723GQM","last_set":1602276868},"previous_names":[],"num_members":5},{"id":"C01CBSYGRQB","name":"lightning-talk-repository","is_channel":true,"is_group":false,"is_im":false,"created":1602281792,"is_archived":false,"is_general":false,"unlinked":0,"name_normalized":"lightning-talk-repository","is_shared":false,"parent_conversation":null,"creator":"U0179312KV3","is_ext_shared":false,"is_org_shared":false,"shared_team_ids":["T016J51T03T"],"pending_shared":[],"pending_connected_team_ids":[],"is_pending_ext_shared":false,"is_member":false,"is_private":false,"is_mpim":false,"topic":{"value":"","creator":"","last_set":0},"purpose":{"value":"","creator":"","last_set":0},"previous_names":[],"num_members":6}],"response_metadata":{"next_cursor":""}}'
   recorded_at: Sat, 10 Oct 2020 20:59:05 GMT
+- request:
+    method: get
+    uri: https://slack.com/api/users.list?token=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 10 Oct 2020 23:51:29 GMT
+      Server:
+      - Apache
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - no-referrer
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - users:read
+      X-Slack-Req-Id:
+      - 35b17b4e5cabde7ad8c29311432dc45e
+      X-Slack-Backend:
+      - r
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '53'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Via:
+      - haproxy-www-5fg6,haproxy-edge-pdx-mprq
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"not_authed"}'
+  recorded_at: Sat, 10 Oct 2020 23:51:26 GMT
 recorded_with: VCR 6.0.0
